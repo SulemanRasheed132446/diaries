@@ -36,6 +36,7 @@ const signUp = (schema: any, req: Request): AuthResponse | Response => {
         email
     } = JSON.parse(req.requestBody) as Partial<User>;
     const user = schema.users.findBy({username});
+
     if(user) {
         return handleError(null, "Such user already exists");
     }

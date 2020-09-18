@@ -5,6 +5,7 @@ import { User } from '../../../interfaces/User';
 import { handleError } from '../errorHandler';
 const createDiary = (schema : any , req: Request) : {user: User, diary: Diary} | Response => {
     try {
+
         const id = req.params.id;
         const user = schema.users.find(id);
         const {
@@ -55,7 +56,18 @@ const updateDiary = (schema : any , req: Request) : {user: User, diary: Diary} |
         return handleError(err,'Unable to updateDiary');
     }
 }
+
+export const getDiaries = (schema: any, req: Request): Diary[] | Response => {
+    try {
+      const user = schema.users.find(req.params.id);
+      return user.diary as Diary[];
+    } catch (error) {
+      return handleError(error, 'Could not get user diaries.');
+    }
+  };
+
 export default {
     createDiary,
-    updateDiary
+    updateDiary,
+    getDiaries
 }
