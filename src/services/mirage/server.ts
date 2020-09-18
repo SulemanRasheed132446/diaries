@@ -1,5 +1,5 @@
 import { belongsTo, Factory, hasMany, Model, Server } from 'miragejs'
-
+import user from  './routes/user'
 
 export const setUpServer  = (env? :any) => {
     new Server({
@@ -29,7 +29,7 @@ export const setUpServer  = (env? :any) => {
         },
         routes() {
             this.urlPrefix= "https://diaries.com"
-            
+            this.post('/auth/signUp',user.signUp );
         }   
 
     })
