@@ -3,6 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { setUpServer } from './services/mirage/server';
+
+if(process.env.NODE_ENV === 'development') {
+  setUpServer();
+}
+ 
 
 ReactDOM.render(
   <React.StrictMode>
