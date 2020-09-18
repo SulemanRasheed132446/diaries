@@ -2,7 +2,7 @@ import { User } from "../../../interfaces/User"
 import {Request, Response} from 'miragejs'
 import { handleError } from "../errorHandler";
 
-type AuthResponse = {
+export type AuthResponse = {
     user:User,
     token: string
 }
